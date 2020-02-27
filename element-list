@@ -1,0 +1,12 @@
+garuntimeenv.envcomponents
+garuntimeenv.envcomponents.datalog
+garuntimeenv.envcomponents.propertys
+garuntimeenv.gacomponents
+garuntimeenv.gacomponents.geneticoperators.crossover
+garuntimeenv.gacomponents.geneticoperators.mutations
+garuntimeenv.gacomponents.geneticoperators.selections
+garuntimeenv.gacomponents.jobshop
+garuntimeenv.gacomponents.jobshop.util
+garuntimeenv.interfaces
+garuntimeenv.runtimeexceptions
+garuntimeenv.utils
