@@ -91,6 +91,7 @@
                 <version>3.1.1</version>
                 <configuration>
                     <source>8</source>
+                    <destDir>docs</destDir>
                     <links>
                         <link>https://knowm.org/javadocs/xchart</link>
                     </links>
