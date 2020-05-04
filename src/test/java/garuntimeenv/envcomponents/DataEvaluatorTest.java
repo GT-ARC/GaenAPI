@@ -1,12 +1,15 @@
 package garuntimeenv.envcomponents;
 
+import garuntimeenv.envcomponents.datalog.DataManager;
 import garuntimeenv.envcomponents.datalog.DataSeries;
 import garuntimeenv.envcomponents.datalog.DataSet;
 import garuntimeenv.gacomponents.jobshop.MakespanFitnessFunction;
 import garuntimeenv.interfaces.IFitnessFunction;
 import garuntimeenv.interfaces.Property;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -20,6 +23,11 @@ public class DataEvaluatorTest {
     DataEvaluator dataEvaluator = new DataEvaluator();
     static HashMap<Property, DataSeries> dataSeries = new HashMap<>();
     IFitnessFunction fitnessFunction = new MakespanFitnessFunction();
+
+    @Before
+    public void setUp() {
+        EnvConfig.getInstance().setVisualEnabled(false);
+    }
 
     @Test
     public void testBreakThrough() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {

@@ -1,5 +1,6 @@
 package garuntimeenv.envcomponents.datalog;
 
+import garuntimeenv.envcomponents.EnvConfig;
 import garuntimeenv.utils.InterfaceHelper;
 import garuntimeenv.utils.Pair;
 
@@ -54,19 +55,21 @@ public class DataSet {
         this.xData.add(x);
         this.yData.add(y);
 
-        this.xDataVisible.add(x);
-        this.yDataVisible.add(y);
+        if (EnvConfig.getInstance().isVisualEnabled()) {
+            this.xDataVisible.add(x);
+            this.yDataVisible.add(y);
 
-        // Calculate the average
-        meanSum += y.doubleValue();
-        if (yData.size() > InterfaceHelper.meanWindowSize) {
-            meanSum -= yData.get(yData.size() - InterfaceHelper.meanWindowSize).doubleValue();
+            // Calculate the average
+            meanSum += y.doubleValue();
+            if (yData.size() > InterfaceHelper.meanWindowSize) {
+                meanSum -= yData.get(yData.size() - InterfaceHelper.meanWindowSize).doubleValue();
+            }
+
+            if (InterfaceHelper.windowSize != -1 && xDataVisible.size() > InterfaceHelper.windowSize)
+                xDataVisible.remove(0);
+            if (InterfaceHelper.windowSize != -1 && yDataVisible.size() > InterfaceHelper.windowSize)
+                yDataVisible.remove(0);
         }
-
-        if (InterfaceHelper.windowSize != -1 && xDataVisible.size() > InterfaceHelper.windowSize)
-            xDataVisible.remove(0);
-        if (InterfaceHelper.windowSize != -1 && yDataVisible.size() > InterfaceHelper.windowSize)
-            yDataVisible.remove(0);
     }
 
     /**

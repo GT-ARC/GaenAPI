@@ -8,7 +8,7 @@ import garuntimeenv.interfaces.*;
 import garuntimeenv.runtimeexceptions.CannotRepairException;
 import garuntimeenv.utils.MyLogger;
 import garuntimeenv.utils.Pair;
-import org.apache.log4j.lf5.LogLevel;
+import org.apache.logging.log4j.Level;
 
 import java.util.*;
 
@@ -278,10 +278,10 @@ public class GAManager {
                     chromosome.setCorrespondingSolution(createdSolution);
                     chromosome.calculateFitness(this.fitnessFunction);
                 } catch (CannotRepairException ce) {
-                    logger.log(LogLevel.ERROR, "GaManager", "Couldn't repair the chromosome");
+                    logger.log(Level.ERROR, "GaManager", "Couldn't repair the chromosome");
                     chromosome.setFitness(this.fitnessFunction.getWorstFitness());
                 } catch (Exception ex) {
-                    logger.log(LogLevel.ERROR, "GaManager", "Tried to repair chromosome but did't work");
+                    logger.log(Level.ERROR, "GaManager", "Tried to repair chromosome but did't work");
                     chromosome.setFitness(this.fitnessFunction.getWorstFitness());
                 }
             }

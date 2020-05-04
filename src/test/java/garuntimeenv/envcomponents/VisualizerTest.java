@@ -3,6 +3,7 @@ package garuntimeenv.envcomponents;
 import garuntimeenv.envcomponents.datalog.DataManager;
 import garuntimeenv.interfaces.Property;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.lang.reflect.Constructor;
@@ -22,6 +23,7 @@ public class VisualizerTest {
 
     // TODO remove the sleep timers
 
+    @Ignore
     @Test
     public void createRandomVisual() throws InterruptedException {
         for (int c = 0; c < 4; c++) {
@@ -41,6 +43,7 @@ public class VisualizerTest {
         }
     }
 
+    @Ignore
     @Test
     public void createAveragedDataSeries() throws InterruptedException {
         for (int j = 0; j < 4; j++) {

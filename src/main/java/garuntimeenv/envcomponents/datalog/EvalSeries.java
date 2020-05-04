@@ -4,7 +4,7 @@ import garuntimeenv.envcomponents.DataEvaluator;
 import garuntimeenv.interfaces.HyperParameter;
 import garuntimeenv.interfaces.Property;
 import garuntimeenv.utils.MyLogger;
-import org.apache.log4j.lf5.LogLevel;
+import org.apache.logging.log4j.Level;
 import org.knowm.xchart.CategoryChart;
 
 import javax.swing.*;
@@ -56,12 +56,12 @@ public class EvalSeries {
     public void addData(DataEvaluator.evaluationPoints evaluationPoint, List<Property> propertyList, List<Double> values) {
 
         if (propertyList == null || values == null) {
-            logger.log(LogLevel.ERROR, "EvalSeries", "Property is null");
+            logger.log(Level.ERROR, "EvalSeries", "Property is null");
             return;
         }
 
         if (propertyList.size() != values.size()) {
-            logger.log(LogLevel.ERROR, "EvalSeries", "Property list size doesnt match values list size");
+            logger.log(Level.ERROR, "EvalSeries", "Property list size doesnt match values list size");
             return;
         }
 

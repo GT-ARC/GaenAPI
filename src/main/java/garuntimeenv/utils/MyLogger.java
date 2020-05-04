@@ -1,8 +1,9 @@
 package garuntimeenv.utils;
 
 import garuntimeenv.envcomponents.EnvConfig;
-import org.apache.log4j.Logger;
-import org.apache.log4j.lf5.LogLevel;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -57,7 +58,7 @@ public class MyLogger {
         if (INSTANCE == null) {
             INSTANCE = new MyLogger();
         }
-        INSTANCE.loggerMap.put(newClass.getName(), Logger.getLogger(newClass));
+        INSTANCE.loggerMap.put(newClass.getName(), LogManager.getLogger(newClass));
         return INSTANCE;
     }
 
@@ -74,7 +75,7 @@ public class MyLogger {
         } else {
             INSTANCE.loggable.addAll(Arrays.asList(levels));
         }
-        INSTANCE.loggerMap.put(newClass.getName(), Logger.getLogger(newClass));
+        INSTANCE.loggerMap.put(newClass.getName(), LogManager.getLogger(newClass));
         return INSTANCE;
     }
 
@@ -86,11 +87,11 @@ public class MyLogger {
      * @param customLevel The custom level that needs to be set
      * @param message     The to be logged massage
      */
-    public void log(LogLevel logLevel, String customLevel, String message) {
+    public void log(Level logLevel, String customLevel, String message) {
         // Check if the custom level is in the current loggable
         if (this.loggable.contains(customLevel) || allLogs) {
             Logger log = this.loggerMap.get(Thread.currentThread().getStackTrace()[1].getClass());
-            switch (logLevel.getLabel()) {
+            switch (logLevel.name()) {
                 case "DEBUG":
                     log.debug(message);
                 case "FATAL":
@@ -103,6 +104,8 @@ public class MyLogger {
                     log.info(message);
                 case "WARNING":
                     log.warn(message);
+                default:
+                    log.error("Loglevel not found");
             }
         }
     }
